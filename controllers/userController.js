@@ -2,7 +2,7 @@ const pool = require("../config/db");
 
 
 const addUser = async (req, res) => {
-    const { username, password, email, user_type, name, address, phone, specialty } = req.body;
+    const { username, password, email, user_type, name, address, phone, specialty, calendly } = req.body;
   
     try {
       await pool.query("BEGIN");
@@ -30,8 +30,8 @@ const addUser = async (req, res) => {
         insertAdditionalInfoQuery = "INSERT INTO patients (user_id, name, address, phone) VALUES ($1, $2, $3, $4)";
         await pool.query(insertAdditionalInfoQuery, [userId, username, address, phone]);
       } else if (user_type === "doctor") {
-        insertAdditionalInfoQuery = "INSERT INTO doctors (user_id, name, address, phone, specialty) VALUES ($1, $2, $3, $4, $5)";
-        await pool.query(insertAdditionalInfoQuery, [userId, name, address, phone, specialty]);
+        insertAdditionalInfoQuery = "INSERT INTO doctors (user_id, name, address, phone, specialty, calendly) VALUES ($1, $2, $3, $4, $5, $6)";
+        await pool.query(insertAdditionalInfoQuery, [userId, name, address, phone, specialty, calendly]);
       }
   
       await pool.query("COMMIT");
