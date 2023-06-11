@@ -14,6 +14,7 @@ const patientRoutes = require('./routes/patientRoutes');
 const doctorRoutes = require('./routes/doctorRoutes');
 const requestRoutes = require('./routes/requestRoutes');
 const appointmentRoutes = require('./routes/appointmentRoutes');
+const messageRoutes = require('./routes/messageRoutes');
 
 
 app.use('/users', userRoutes);
@@ -21,6 +22,7 @@ app.use('/patients', patientRoutes);
 app.use('/doctors', doctorRoutes);
 app.use('/requests', requestRoutes);
 app.use('/appointments' , appointmentRoutes);
+app.use('/messages' , messageRoutes);
 
 
 
