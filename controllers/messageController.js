@@ -20,15 +20,15 @@ const getChat = async (req, res) => {
 }
 
 const createChat = async (req, res) => {
-    const { fromID, toID, message } = req.body;
+    const { fromID, toID,date, message } = req.body;
 
     const query = `
         INSERT INTO messages (fromID, toID, date, message)
-        VALUES ($1, $2, CURRENT_TIMESTAMP, $3)
+        VALUES ($1, $2, $3, $4)
     `;
 
     try {
-        await pool.query(query, [fromID, toID, message]);
+        await pool.query(query, [fromID, toID,date, message]);
         res.status(201).json({ message: 'Chat created' });
     } catch(err) {
         console.error(err);
