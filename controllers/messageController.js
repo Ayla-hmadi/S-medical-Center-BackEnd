@@ -24,7 +24,7 @@ const createChat = async (req, res) => {
 
     const query = `
         INSERT INTO messages (fromID, toID, date, message)
-        VALUES ($1, $2, CURRENT_DATE, $3)
+        VALUES ($1, $2, CURRENT_TIMESTAMP, $3)
     `;
 
     try {
